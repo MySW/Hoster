@@ -6,8 +6,10 @@
 //  Copyright © 2015年 梧桐树. All rights reserved.
 //
 
-#import "BaseMapViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface NearbyViewController :BaseMapViewController
+@interface NearbyViewController : UIViewController
+
+
 
 @end

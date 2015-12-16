@@ -34,13 +34,15 @@
 		AB3303D21C1FF18800147183 /* BaseMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3303D11C1FF18800147183 /* BaseMapViewController.m */; };
 		AB3303D41C1FF2E000147183 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3303D31C1FF2E000147183 /* MAMapKit.framework */; };
 		AB3B824E1C200B57002F8A0E /* money@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3B824D1C200B57002F8A0E /* money@2x.png */; };
-		AB3B82601C20160E002F8A0E /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3B825E1C20160E002F8A0E /* AddressCell.m */; };
-		AB3B82611C20160E002F8A0E /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3B825F1C20160E002F8A0E /* AddressCell.xib */; };
-		AB3B82651C2029E8002F8A0E /* TapyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3B82631C2029E8002F8A0E /* TapyTableViewCell.m */; };
-		AB3B82661C2029E8002F8A0E /* TapyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3B82641C2029E8002F8A0E /* TapyTableViewCell.xib */; };
-		AB3B826A1C20370D002F8A0E /* OtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3B82681C20370D002F8A0E /* OtherTableViewCell.m */; };
-		AB3B826B1C20370D002F8A0E /* OtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3B82691C20370D002F8A0E /* OtherTableViewCell.xib */; };
 		AB3B826F1C204AC6002F8A0E /* SendGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3B826E1C204AC6002F8A0E /* SendGoodsViewController.m */; };
+		AB7765321C21990300B91670 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7765301C21990300B91670 /* AddressCell.m */; };
+		AB7765331C21990300B91670 /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7765311C21990300B91670 /* AddressCell.xib */; };
+		AB77653C1C21997D00B91670 /* TapyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB77653A1C21997D00B91670 /* TapyTableViewCell.m */; };
+		AB77653D1C21997D00B91670 /* TapyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB77653B1C21997D00B91670 /* TapyTableViewCell.xib */; };
+		AB7765411C21998700B91670 /* OtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB77653F1C21998700B91670 /* OtherTableViewCell.m */; };
+		AB7765421C21998700B91670 /* OtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7765401C21998700B91670 /* OtherTableViewCell.xib */; };
+		AB7765461C21999B00B91670 /* AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7765441C21999B00B91670 /* AddTableViewCell.m */; };
+		AB7765471C21999B00B91670 /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7765451C21999B00B91670 /* AddTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,17 +103,20 @@
 		AB3303D31C1FF2E000147183 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		AB3B824A1C200229002F8A0E /* MapAPIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapAPIKey.h; sourceTree = "<group>"; };
 		AB3B824D1C200B57002F8A0E /* money@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "money@2x.png"; sourceTree = "<group>"; };
-		AB3B825D1C20160E002F8A0E /* AddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressCell.h; sourceTree = "<group>"; };
-		AB3B825E1C20160E002F8A0E /* AddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
-		AB3B825F1C20160E002F8A0E /* AddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCell.xib; sourceTree = "<group>"; };
-		AB3B82621C2029E8002F8A0E /* TapyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapyTableViewCell.h; sourceTree = "<group>"; };
-		AB3B82631C2029E8002F8A0E /* TapyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapyTableViewCell.m; sourceTree = "<group>"; };
-		AB3B82641C2029E8002F8A0E /* TapyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TapyTableViewCell.xib; sourceTree = "<group>"; };
-		AB3B82671C20370D002F8A0E /* OtherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherTableViewCell.h; sourceTree = "<group>"; };
-		AB3B82681C20370D002F8A0E /* OtherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherTableViewCell.m; sourceTree = "<group>"; };
-		AB3B82691C20370D002F8A0E /* OtherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherTableViewCell.xib; sourceTree = "<group>"; };
 		AB3B826D1C204AC6002F8A0E /* SendGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendGoodsViewController.h; sourceTree = "<group>"; };
 		AB3B826E1C204AC6002F8A0E /* SendGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendGoodsViewController.m; sourceTree = "<group>"; };
+		AB77652F1C21990300B91670 /* AddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressCell.h; sourceTree = "<group>"; };
+		AB7765301C21990300B91670 /* AddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
+		AB7765311C21990300B91670 /* AddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCell.xib; sourceTree = "<group>"; };
+		AB7765391C21997D00B91670 /* TapyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapyTableViewCell.h; sourceTree = "<group>"; };
+		AB77653A1C21997D00B91670 /* TapyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapyTableViewCell.m; sourceTree = "<group>"; };
+		AB77653B1C21997D00B91670 /* TapyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TapyTableViewCell.xib; sourceTree = "<group>"; };
+		AB77653E1C21998700B91670 /* OtherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherTableViewCell.h; sourceTree = "<group>"; };
+		AB77653F1C21998700B91670 /* OtherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherTableViewCell.m; sourceTree = "<group>"; };
+		AB7765401C21998700B91670 /* OtherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherTableViewCell.xib; sourceTree = "<group>"; };
+		AB7765431C21999B00B91670 /* AddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTableViewCell.h; sourceTree = "<group>"; };
+		AB7765441C21999B00B91670 /* AddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableViewCell.m; sourceTree = "<group>"; };
+		AB7765451C21999B00B91670 /* AddTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,15 +268,18 @@
 				AB33037D1C1F9BE600147183 /* MainViewController.m */,
 				AB33037A1C1F9BE600147183 /* CallcarViewController.h */,
 				AB33037B1C1F9BE600147183 /* CallcarViewController.m */,
-				AB3B825D1C20160E002F8A0E /* AddressCell.h */,
-				AB3B825E1C20160E002F8A0E /* AddressCell.m */,
-				AB3B825F1C20160E002F8A0E /* AddressCell.xib */,
-				AB3B82621C2029E8002F8A0E /* TapyTableViewCell.h */,
-				AB3B82631C2029E8002F8A0E /* TapyTableViewCell.m */,
-				AB3B82641C2029E8002F8A0E /* TapyTableViewCell.xib */,
-				AB3B82671C20370D002F8A0E /* OtherTableViewCell.h */,
-				AB3B82681C20370D002F8A0E /* OtherTableViewCell.m */,
-				AB3B82691C20370D002F8A0E /* OtherTableViewCell.xib */,
+				AB77652F1C21990300B91670 /* AddressCell.h */,
+				AB7765301C21990300B91670 /* AddressCell.m */,
+				AB7765311C21990300B91670 /* AddressCell.xib */,
+				AB7765391C21997D00B91670 /* TapyTableViewCell.h */,
+				AB77653A1C21997D00B91670 /* TapyTableViewCell.m */,
+				AB77653B1C21997D00B91670 /* TapyTableViewCell.xib */,
+				AB7765431C21999B00B91670 /* AddTableViewCell.h */,
+				AB7765441C21999B00B91670 /* AddTableViewCell.m */,
+				AB7765451C21999B00B91670 /* AddTableViewCell.xib */,
+				AB77653E1C21998700B91670 /* OtherTableViewCell.h */,
+				AB77653F1C21998700B91670 /* OtherTableViewCell.m */,
+				AB7765401C21998700B91670 /* OtherTableViewCell.xib */,
 				AB3B826C1C20469D002F8A0E /* SendInformation */,
 			);
 			name = HomePage;
@@ -364,6 +372,7 @@
 				TargetAttributes = {
 					AB33033F1C1F99F600147183 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = E57RSLC2VL;
 					};
 					AB3303581C1F99F600147183 = {
 						CreatedOnToolsVersion = 7.1;
@@ -400,13 +409,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7765471C21999B00B91670 /* AddTableViewCell.xib in Resources */,
 				AB3303531C1F99F600147183 /* LaunchScreen.storyboard in Resources */,
 				AB3B824E1C200B57002F8A0E /* money@2x.png in Resources */,
 				AB3303501C1F99F600147183 /* Assets.xcassets in Resources */,
-				AB3B82661C2029E8002F8A0E /* TapyTableViewCell.xib in Resources */,
-				AB3B826B1C20370D002F8A0E /* OtherTableViewCell.xib in Resources */,
+				AB77653D1C21997D00B91670 /* TapyTableViewCell.xib in Resources */,
+				AB7765421C21998700B91670 /* OtherTableViewCell.xib in Resources */,
 				AB3303CF1C1FEAC700147183 /* AMap.bundle in Resources */,
-				AB3B82611C20160E002F8A0E /* AddressCell.xib in Resources */,
+				AB7765331C21990300B91670 /* AddressCell.xib in Resources */,
 				AB33034E1C1F99F600147183 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,17 +442,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7765321C21990300B91670 /* AddressCell.m in Sources */,
 				AB33034B1C1F99F600147183 /* ViewController.m in Sources */,
 				AB3303B31C1FC03F00147183 /* NearbyViewController.m in Sources */,
 				AB3B826F1C204AC6002F8A0E /* SendGoodsViewController.m in Sources */,
-				AB3B826A1C20370D002F8A0E /* OtherTableViewCell.m in Sources */,
 				AB3303481C1F99F600147183 /* AppDelegate.m in Sources */,
+				AB7765411C21998700B91670 /* OtherTableViewCell.m in Sources */,
 				AB3303451C1F99F600147183 /* main.m in Sources */,
 				AB3303D21C1FF18800147183 /* BaseMapViewController.m in Sources */,
-				AB3B82651C2029E8002F8A0E /* TapyTableViewCell.m in Sources */,
 				AB3303881C1F9BE600147183 /* MainViewController.m in Sources */,
-				AB3B82601C20160E002F8A0E /* AddressCell.m in Sources */,
+				AB7765461C21999B00B91670 /* AddTableViewCell.m in Sources */,
 				AB3303871C1F9BE600147183 /* CallcarViewController.m in Sources */,
+				AB77653C1C21997D00B91670 /* TapyTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hoster",
@@ -600,6 +612,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hoster",

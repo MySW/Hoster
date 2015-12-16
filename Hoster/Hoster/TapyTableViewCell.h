@@ -10,4 +10,9 @@
 
 @interface TapyTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *otherLabel;
+
 @end
