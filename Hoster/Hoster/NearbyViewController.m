@@ -35,9 +35,6 @@
 {
     [self initMapView];
     [self initSearch];
-    BaseMapViewController *baseVC = [BaseMapViewController new];
-    baseVC.mapView = self.mapView;
-    baseVC.search = self.search;
 }
 
 - (void)initMapView
@@ -67,19 +64,30 @@
     self.search.delegate = self;
 }
 
+// 获取当前定位的地图坐标
+- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
+{
+    if (updatingLocation) {
+        NSLog(@"user%f,%f", userLocation.coordinate.latitude, userLocation.coordinate.longitude);
+//        _currentLoction = [userLocation.location copy];
+    }
+}
+
+//  选中当前定位的标注
+- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view
+{
+    // 选中当前的定位地址进行逆地里编码
+    if ([view.annotation isKindOfClass:[MAUserLocation class]]) {
+//        [self reGeoAction];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
