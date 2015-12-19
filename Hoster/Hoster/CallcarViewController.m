@@ -46,7 +46,7 @@
 - (void)setupData
 {
     placeholderArr = @[@"请输入起始地", @"请输入目的地"];
-    passAddressArr = [NSMutableArray arrayWithObjects:@"爱尔兰", @"爱尔兰", nil];
+    passAddressArr = [NSMutableArray array];
 }
 - (void)setupUI {
     // 下部分UI
@@ -97,20 +97,42 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return (passAddressArr.count );
+    if (section == 1 || section == 3) {
+        return 1;
     }
+    if (section == 2) {
+        return passAddressArr.count;
+    }
+    
     return 2;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 5;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customecell"];
-    if (1 == indexPath.section) {
-        if (1 == indexPath.section && indexPath.row > 1) {
+    switch (indexPath.section) {
+        case 1:
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AddressCell" owner:self options:nil];
+            if (nib.count > 0) {
+                addressCell = [nib objectAtIndex:0];
+                addressCell.titleLabel.text = self.mypostion;
+                if (addressCell.titleLabel.text.length > 0) {
+                    addressCell.placeholderLabel.hidden = YES;
+                } else {
+                    addressCell.placeholderLabel.text = @"请输入起始地";
+                }
+                cell = addressCell;
+            }
+            return cell;
+        }
+            break;
+        case 2:
+        {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AddTableViewCell" owner:self options:nil];
             if (nib.count > 0) {
                 addCell = [nib objectAtIndex:0];
@@ -119,31 +141,45 @@
             cell.selectionStyle = UITableViewCellSeparatorStyleNone;
             return cell;
         }
-        
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AddressCell" owner:self options:nil];
-        if (nib.count > 0) {
-            addressCell = [nib objectAtIndex:0];
-            addressCell.titleLabel.text = self.mypostion;
-            if (addressCell.titleLabel.text.length > 0) {
-                addressCell.placeholderLabel.hidden = YES;
-            } else {
-                addressCell.placeholderLabel.text = placeholderArr[indexPath.row];
+            break;
+        case 3:
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AddressCell" owner:self options:nil];
+            if (nib.count > 0) {
+                addressCell = [nib objectAtIndex:0];
+                addressCell.titleLabel.text = self.mypostion;
+                if (addressCell.titleLabel.text.length > 0) {
+                    addressCell.placeholderLabel.hidden = YES;
+                } else {
+                    addressCell.placeholderLabel.text = @"请输入目的地";
+                }
+                cell = addressCell;
             }
-            cell = addressCell;
+            return cell;
         }
-        return cell;
-    }
-    
-    if (1 == indexPath.row && 2 == indexPath.section ) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"OtherTableViewCell" owner:self options:nil];
-        if (nib.count > 0) {
-            otherCell = [nib objectAtIndex:0];
-            cell = otherCell;
+        case 4:
+        {
+            if (indexPath.row == 0) {
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AddTableViewCell" owner:self options:nil];
+                if (nib.count > 0) {
+                    addCell = [nib objectAtIndex:0];
+                    addCell.titlelabel.text = @"给司机捎句话";
+                    cell = addCell;
+                }
+                cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+                return cell;
+            }
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"OtherTableViewCell" owner:self options:nil];
+            if (nib.count > 0) {
+                otherCell = [nib objectAtIndex:0];
+                cell = otherCell;
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
         }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+        default:
+            break;
     }
-    
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TapyTableViewCell" owner:self options:nil];
     if (nib.count > 0) {
         tapyCell = [nib objectAtIndex:0];
@@ -172,7 +208,7 @@
 #pragma mark -footerView
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    if (section  == 1) {
+    if (section  == 3) {
         UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width, 60)];
         footView.backgroundColor = [UIColor whiteColor];
         UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -182,7 +218,7 @@
         [footView addSubview:selectBtn];
         UILabel *detailsLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(selectBtn.frame) + 20, CGRectGetMinY(selectBtn.frame), Width / 3 * 2 - 30, 40)];
         detailsLabel.numberOfLines = 0;
-        detailsLabel.text = @"hsdjhsdfsfdisdfusigjsdgjsjfdsghhsgjhjshjhfgsjhfsj";
+        detailsLabel.text = @"中国人民解放军开赴大别山根据地开展人民群众动员工作";
         detailsLabel.font = [UIFont systemFontOfSize:12];
         [footView addSubview:detailsLabel];
         return footView;
@@ -198,37 +234,44 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (section == 2 || section == 3) {
+        return 0.01;
+    }
     return 20;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 1) {
+    if (section == 3) {
         return 60;
     }
-    return 0.1;
+    return 0.01;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        SendGoodsViewController *sendGoodsVC = [SendGoodsViewController new];
-        sendGoodsVC.delegate = self;
-        [self.navigationController pushViewController:sendGoodsVC animated:YES];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            SendGoodsViewController *sendGoodsVC = [SendGoodsViewController new];
+            sendGoodsVC.delegate = self;
+            [self.navigationController pushViewController:sendGoodsVC animated:YES];
+            return;
+        } else {
+            
+            return;
+        }
     }
-    if (indexPath.section == 0 && indexPath.row == 1) {
+    if (indexPath.section == 4 ) {
         
+        return;
     }
-    
-    if (indexPath.section == 1) {
-        StartViewController *startVC = [StartViewController new];
-        [self.navigationController pushViewController:startVC animated:YES];
-    }
+    StartViewController *startVC = [StartViewController new];
+    [self.navigationController pushViewController:startVC animated:YES];
 }
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1 && indexPath.row > 1) {
+    if (indexPath.section == 2) {
         return YES;
     }
     return NO;
@@ -247,14 +290,10 @@
 #pragma mark 提交编辑操作时会调用这个方法(删除，添加)
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     // 删除操作
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // 1.删除数据
-        [passAddressArr removeObjectAtIndex:(indexPath.row )];
-        
-        // 2.更新UITableView UI界面
-//         [tableView reloadData];
-        [self.detailsTVB deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation: UITableViewRowAnimationRight];
-//    }
+    [passAddressArr removeObjectAtIndex:(indexPath.row )];
+    // 2.更新UITableView UI界面
+    
+    [self.detailsTVB deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation: UITableViewRowAnimationRight];
 }
 
 #pragma mark 途经地
@@ -268,6 +307,7 @@
 
 -(void)sendStr:(NSString *)str
 {
+    carStly = str;
     [self.detailsTVB reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated
