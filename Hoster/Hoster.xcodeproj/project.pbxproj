@@ -43,6 +43,9 @@
 		AB7765421C21998700B91670 /* OtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7765401C21998700B91670 /* OtherTableViewCell.xib */; };
 		AB7765461C21999B00B91670 /* AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7765441C21999B00B91670 /* AddTableViewCell.m */; };
 		AB7765471C21999B00B91670 /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7765451C21999B00B91670 /* AddTableViewCell.xib */; };
+		ABE62D491C24050500298541 /* MapLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE62D481C24050500298541 /* MapLocation.m */; };
+		ABF092701C228A9C00B1538B /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF0926F1C228A9C00B1538B /* AMapLocationKit.framework */; };
+		ABF092F11C2301F000B1538B /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF092F01C2301F000B1538B /* StartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +120,11 @@
 		AB7765431C21999B00B91670 /* AddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTableViewCell.h; sourceTree = "<group>"; };
 		AB7765441C21999B00B91670 /* AddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableViewCell.m; sourceTree = "<group>"; };
 		AB7765451C21999B00B91670 /* AddTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTableViewCell.xib; sourceTree = "<group>"; };
+		ABE62D471C24050500298541 /* MapLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLocation.h; sourceTree = "<group>"; };
+		ABE62D481C24050500298541 /* MapLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLocation.m; sourceTree = "<group>"; };
+		ABF0926F1C228A9C00B1538B /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
+		ABF092EF1C2301F000B1538B /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		ABF092F01C2301F000B1538B /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +145,7 @@
 				AB3303981C1F9D5600147183 /* Foundation.framework in Frameworks */,
 				AB3303D41C1FF2E000147183 /* MAMapKit.framework in Frameworks */,
 				AB3303961C1F9D4C00147183 /* UIKit.framework in Frameworks */,
+				ABF092701C228A9C00B1538B /* AMapLocationKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +189,7 @@
 		AB3303421C1F99F600147183 /* Hoster */ = {
 			isa = PBXGroup;
 			children = (
+				ABE62D461C2404C000298541 /* custome */,
 				AB3303461C1F99F600147183 /* AppDelegate.h */,
 				AB3303471C1F99F600147183 /* AppDelegate.m */,
 				AB3303491C1F99F600147183 /* ViewController.h */,
@@ -227,6 +237,7 @@
 		AB3303761C1F9B9B00147183 /* ThirdFramework */ = {
 			isa = PBXGroup;
 			children = (
+				ABF0926F1C228A9C00B1538B /* AMapLocationKit.framework */,
 				AB3303D31C1FF2E000147183 /* MAMapKit.framework */,
 				AB3303CE1C1FEAC700147183 /* AMap.bundle */,
 				AB3303CC1C1FEABF00147183 /* AMapSearchKit.framework */,
@@ -301,8 +312,19 @@
 			children = (
 				AB3B826D1C204AC6002F8A0E /* SendGoodsViewController.h */,
 				AB3B826E1C204AC6002F8A0E /* SendGoodsViewController.m */,
+				ABF092EF1C2301F000B1538B /* StartViewController.h */,
+				ABF092F01C2301F000B1538B /* StartViewController.m */,
 			);
 			name = SendInformation;
+			sourceTree = "<group>";
+		};
+		ABE62D461C2404C000298541 /* custome */ = {
+			isa = PBXGroup;
+			children = (
+				ABE62D471C24050500298541 /* MapLocation.h */,
+				ABE62D481C24050500298541 /* MapLocation.m */,
+			);
+			name = custome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,8 +464,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF092F11C2301F000B1538B /* StartViewController.m in Sources */,
 				AB7765321C21990300B91670 /* AddressCell.m in Sources */,
 				AB33034B1C1F99F600147183 /* ViewController.m in Sources */,
+				ABE62D491C24050500298541 /* MapLocation.m in Sources */,
 				AB3303B31C1FC03F00147183 /* NearbyViewController.m in Sources */,
 				AB3B826F1C204AC6002F8A0E /* SendGoodsViewController.m in Sources */,
 				AB3303481C1F99F600147183 /* AppDelegate.m in Sources */,
@@ -600,7 +624,7 @@
 					"$(PROJECT_DIR)/Hoster",
 				);
 				INFOPLIST_FILE = Hoster/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wutongshu.Hoster;
@@ -618,7 +642,7 @@
 					"$(PROJECT_DIR)/Hoster",
 				);
 				INFOPLIST_FILE = Hoster/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wutongshu.Hoster;

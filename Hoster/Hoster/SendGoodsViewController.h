@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol sendStrDelegate <NSObject>
+
+- (void)sendStr: (NSString *)str;
+
+@end
+
 @interface SendGoodsViewController : UIViewController
 
+@property (nonatomic, strong) NSString *startTime;
+@property (nonatomic, assign)id<sendStrDelegate>delegate;
 @end

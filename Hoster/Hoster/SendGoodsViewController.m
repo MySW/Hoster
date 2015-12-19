@@ -8,9 +8,17 @@
 //
 
 #import "SendGoodsViewController.h"
+#import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+#import "MapAPIKey.h"
 
-@interface SendGoodsViewController ()<UITableViewDelegate, UITableViewDataSource>
-
+@interface SendGoodsViewController ()<UITableViewDelegate, UITableViewDataSource,MAMapViewDelegate,AMapSearchDelegate>
+{
+    CLLocation *_currentLoction;
+    NSString *address;
+}
+@property (nonatomic, strong) MAMapView *mapView;
+@property (nonatomic, strong) AMapSearchAPI *search;
 @property (nonatomic, strong) UITableView *sendTableView;
 @end
 
@@ -19,6 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTableView];
+    [self data];
+}
+
+- (void)data
+{
+    address = @"分数爱";
 }
 
 - (void)initTableView
@@ -37,12 +51,81 @@
     [submit_btn addTarget:self action:@selector(submitAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:submit_btn];
     
+    [self initMapView];
+    [self initSearch];
+    
 }
 
 - (void)submitAction:(UIButton *)sender
 {
     NSLog(@"I'm a button");
 }
+
+- (void)initMapView
+{
+    [MAMapServices sharedServices].apiKey = (NSString *)APIKey;
+    self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(-10, 10, 10, 10)];
+    self.mapView.delegate = self;
+    [self.view addSubview:self.mapView];
+    self.mapView.visibleMapRect = MAMapRectMake(220880104, 101476980, 272496, 466656);
+    self.mapView.showsUserLocation = YES;
+    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+    self.mapView.zoomLevel = 16;
+}
+
+- (void)initSearch
+{
+    [AMapSearchServices sharedServices].apiKey = (NSString *)APIKey;
+    self.search = [[AMapSearchAPI alloc] init];
+    self.search.delegate = self;
+}
+
+
+// 获取当前定位的地图坐标
+- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
+{
+    _currentLoction = userLocation.location;
+    [self reGeoAction];
+}
+
+//  选中当前定位的标注
+- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view
+{
+    // 选中当前的定位地址进行逆地里编码
+    if ([view.annotation isKindOfClass:[MAUserLocation class]]) {
+        [self reGeoAction];
+    }
+}
+//---------------------------------逆地理编码请求
+- (void)reGeoAction
+{
+    if(_currentLoction){
+        // 构造搜索请求对象
+        AMapReGeocodeSearchRequest *request = [[AMapReGeocodeSearchRequest alloc] init];
+        request.location = [AMapGeoPoint locationWithLatitude:_currentLoction.coordinate.latitude longitude:_currentLoction.coordinate.longitude];
+        request.radius = 10000;
+        request.requireExtension = YES;
+        
+        // 发起你地理编码
+        [self.search AMapReGoecodeSearch:request];
+    }
+}
+
+- (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
+{
+    if (response.regeocode != nil) {
+        // 通过搜索请求对象处理搜索结果
+        NSString *title = response.regeocode.addressComponent.city;
+        if (title.length == 0) {
+            title = response.regeocode.addressComponent.province;
+        }
+        self.mapView.userLocation.title = title;
+        self.mapView.userLocation.subtitle = response.regeocode.formattedAddress;
+    }
+    
+}
+
+
 
 #pragma mark - tableviewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -62,6 +145,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
     }
+    cell.textLabel.text = address;
     return cell;
 }
 
@@ -69,7 +153,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.delegate sendStr:address];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

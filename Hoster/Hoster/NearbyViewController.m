@@ -13,7 +13,10 @@
 #import "MapAPIKey.h"
 
 @interface NearbyViewController ()<MAMapViewDelegate, AMapSearchDelegate>
+{
+    CLLocation *_currentLoction;
 
+}
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapSearchAPI *search;
 
@@ -69,7 +72,7 @@
 {
     if (updatingLocation) {
         NSLog(@"user%f,%f", userLocation.coordinate.latitude, userLocation.coordinate.longitude);
-//        _currentLoction = [userLocation.location copy];
+        _currentLoction = [userLocation.location copy];
     }
 }
 
@@ -78,8 +81,73 @@
 {
     // 选中当前的定位地址进行逆地里编码
     if ([view.annotation isKindOfClass:[MAUserLocation class]]) {
-//        [self reGeoAction];
+        [self reGeoAction];
     }
+}
+
+//---------------------------------逆地理编码请求
+- (void)reGeoAction
+{
+    if(_currentLoction){
+        // 构造搜索请求对象
+        AMapReGeocodeSearchRequest *request = [[AMapReGeocodeSearchRequest alloc] init];
+        request.location = [AMapGeoPoint locationWithLatitude:_currentLoction.coordinate.latitude longitude:_currentLoction.coordinate.longitude];
+        request.radius = 10000;
+        request.requireExtension = YES;
+        
+        // 发起你地理编码
+        [self.search AMapReGoecodeSearch:request];
+    }
+}
+
+// --------------------------------实现逆地理编码的回调函数
+/*            请求失败时             */
+- (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
+{
+    NSLog(@"request: %@, error: %@", request, error);
+}
+
+- (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
+{
+    if (response.regeocode != nil) {
+        // 通过搜索请求对象处理搜索结果
+        NSString *title = response.regeocode.addressComponent.building;
+        if (title.length == 0) {
+            title = response.regeocode.addressComponent.district;
+        }
+        self.mapView.userLocation.title = title;
+        self.mapView.userLocation.subtitle = response.regeocode.formattedAddress;
+    }
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+    pointAnnotation.coordinate = CLLocationCoordinate2DMake(39.989631, 116.481018);
+    
+    [_mapView addAnnotation:pointAnnotation];
+}
+
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id <MAAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    {
+        static NSString *pointReuseIndentifier = @"pointReuseIndentifier";
+        MAPinAnnotationView*annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
+        if (annotationView == nil)
+        {
+            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
+        }
+        annotationView.canShowCallout= YES;       //设置气泡可以弹出，默认为NO
+        annotationView.animatesDrop = YES;        //设置标注动画显示，默认为NO
+        annotationView.draggable = YES;           //设置标注可以拖动，默认为NO
+        annotationView.pinColor = MAPinAnnotationColorPurple;
+        return annotationView;
+    }
+    return nil;
 }
 
 
@@ -87,7 +155,4 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
 @end

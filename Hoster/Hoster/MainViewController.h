@@ -11,5 +11,6 @@
 @interface MainViewController : UIViewController
 
 @property(nonatomic, strong) UITableView *mainTableView;
+@property(nonatomic, strong) NSString *address;
 
 @end

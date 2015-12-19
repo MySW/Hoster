@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
 
-
-@interface BaseMapViewController : UIViewController<AMapSearchDelegate, MAMapViewDelegate>
+@interface BaseMapViewController : UIViewController<AMapSearchDelegate, MAMapViewDelegate,AMapLocationManagerDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapSearchAPI *search;
+@property (nonatomic, strong) AMapLocationManager *locationManager;
 
 - (void)returnAction;
 - (void)initTitle:(NSString *)title;

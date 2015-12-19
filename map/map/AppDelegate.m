@@ -1,17 +1,14 @@
 //
 //  AppDelegate.m
-//  Hoster
+//  Map
 //
-//  Created by 梧桐树 on 15/12/15.
+//  Created by 梧桐树 on 15/12/17.
 //  Copyright © 2015年 梧桐树. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "MapAPIKey.h"
-#import <MAMapKit/MAMapKit.h>
-#import <AMapSearchKit/AMapSearchKit.h>
-#import <AMapLocationKit/AMapLocationKit.h>
-@interface AppDelegate ()<CLLocationManagerDelegate>
+
+@interface AppDelegate ()
 
 @end
 
@@ -19,8 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [MAMapServices sharedServices].apiKey = (NSString *)APIKey;
-    [AMapLocationServices sharedServices].apiKey = (NSString *)APIKey;
+    // Override point for customization after application launch.
     return YES;
 }
 

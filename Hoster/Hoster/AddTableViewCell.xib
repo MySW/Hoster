@@ -12,33 +12,37 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请按照卸货顺序填写以便估算价格（左滑删除）" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3b-Pb-GDz">
-                        <rect key="frame" x="148" y="4" width="167" height="51.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uek-dG-9rN">
+                        <rect key="frame" x="13" y="10" width="35" height="39"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="VTF-Zd-pn2"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="途径目的地" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpH-Qa-hdq">
+                        <rect key="frame" x="51" y="10" width="259" height="39"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.27095170454545459" green="0.27095170454545459" blue="0.27095170454545459" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9j-oc-wXs">
-                        <rect key="frame" x="8" y="15" width="136" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="136" id="o2x-Zg-qr5"/>
-                        </constraints>
-                        <state key="normal" title="添加目的地"/>
-                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="z3b-Pb-GDz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="43l-rT-IDW"/>
-                    <constraint firstItem="e9j-oc-wXs" firstAttribute="centerY" secondItem="z3b-Pb-GDz" secondAttribute="centerY" id="D48-hg-ZXW"/>
-                    <constraint firstAttribute="bottom" secondItem="z3b-Pb-GDz" secondAttribute="bottom" constant="4" id="Foa-4Y-jMj"/>
-                    <constraint firstAttribute="trailing" secondItem="z3b-Pb-GDz" secondAttribute="trailing" constant="5" id="i4Z-nS-svs"/>
-                    <constraint firstItem="z3b-Pb-GDz" firstAttribute="leading" secondItem="e9j-oc-wXs" secondAttribute="trailing" constant="4" id="rMO-ID-cM2"/>
-                    <constraint firstItem="e9j-oc-wXs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vuU-ec-lcc"/>
+                    <constraint firstItem="HpH-Qa-hdq" firstAttribute="leading" secondItem="Uek-dG-9rN" secondAttribute="trailing" constant="3" id="5py-0c-il3"/>
+                    <constraint firstItem="Uek-dG-9rN" firstAttribute="bottom" secondItem="HpH-Qa-hdq" secondAttribute="bottom" id="BI2-eY-8uc"/>
+                    <constraint firstItem="HpH-Qa-hdq" firstAttribute="leading" secondItem="Uek-dG-9rN" secondAttribute="trailing" constant="3" id="ONS-Bk-hxQ"/>
+                    <constraint firstItem="Uek-dG-9rN" firstAttribute="top" secondItem="HpH-Qa-hdq" secondAttribute="top" id="RZi-Kx-4li"/>
+                    <constraint firstItem="Uek-dG-9rN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="XvM-ba-XyV"/>
+                    <constraint firstAttribute="trailing" secondItem="HpH-Qa-hdq" secondAttribute="trailing" constant="10" id="aAg-sV-fbm"/>
+                    <constraint firstItem="Uek-dG-9rN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gMw-qx-F1V"/>
+                    <constraint firstItem="Uek-dG-9rN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="l7S-xb-xEF"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="245" y="259"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="money.png" width="40" height="40"/>
+    </resources>
 </document>
