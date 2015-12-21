@@ -172,6 +172,35 @@
 
 #pragma mark --tableViewdelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (self.flag_section) {
+        case 1:
+        {
+            AMapPOI *poi = _poinsArr[indexPath.row];
+            [self.delegate senderMessage:poi.name];
+        }
+            break;
+        case 2:
+        {
+            AMapPOI *poi = _poinsArr[indexPath.row];
+            [self.delegate senderPassAddress:poi.name with:self.flag];
+        }
+            break;
+        case 3:
+        {
+            AMapPOI *poi = _poinsArr[indexPath.row];
+            [self.delegate senderOthereMessge:poi.name];
+        }
+            break;
+        default:
+            break;
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

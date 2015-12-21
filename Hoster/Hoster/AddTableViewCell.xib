@@ -18,10 +18,10 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uek-dG-9rN">
                         <rect key="frame" x="13" y="10" width="35" height="39"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="VTF-Zd-pn2"/>
+                            <constraint firstAttribute="width" constant="35" id="ZwI-8y-BC7"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="途径目的地" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpH-Qa-hdq">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="途径目的地" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpH-Qa-hdq">
                         <rect key="frame" x="51" y="10" width="259" height="39"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.27095170454545459" green="0.27095170454545459" blue="0.27095170454545459" alpha="1" colorSpace="calibratedRGB"/>
@@ -29,14 +29,13 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="HpH-Qa-hdq" firstAttribute="leading" secondItem="Uek-dG-9rN" secondAttribute="trailing" constant="3" id="5py-0c-il3"/>
-                    <constraint firstItem="Uek-dG-9rN" firstAttribute="bottom" secondItem="HpH-Qa-hdq" secondAttribute="bottom" id="BI2-eY-8uc"/>
-                    <constraint firstItem="HpH-Qa-hdq" firstAttribute="leading" secondItem="Uek-dG-9rN" secondAttribute="trailing" constant="3" id="ONS-Bk-hxQ"/>
-                    <constraint firstItem="Uek-dG-9rN" firstAttribute="top" secondItem="HpH-Qa-hdq" secondAttribute="top" id="RZi-Kx-4li"/>
-                    <constraint firstItem="Uek-dG-9rN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="XvM-ba-XyV"/>
-                    <constraint firstAttribute="trailing" secondItem="HpH-Qa-hdq" secondAttribute="trailing" constant="10" id="aAg-sV-fbm"/>
-                    <constraint firstItem="Uek-dG-9rN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gMw-qx-F1V"/>
-                    <constraint firstItem="Uek-dG-9rN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="l7S-xb-xEF"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="HpH-Qa-hdq" secondAttribute="bottom" constant="2" id="T19-fL-fjf"/>
+                    <constraint firstItem="Uek-dG-9rN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="UF1-7f-J0H"/>
+                    <constraint firstItem="HpH-Qa-hdq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="eLJ-p6-5ZH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HpH-Qa-hdq" secondAttribute="trailing" constant="2" id="fHx-bF-pe1"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Uek-dG-9rN" secondAttribute="bottom" constant="2" id="kXz-xi-uyL"/>
+                    <constraint firstItem="Uek-dG-9rN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="qgZ-Fz-8zv"/>
+                    <constraint firstItem="HpH-Qa-hdq" firstAttribute="leading" secondItem="Uek-dG-9rN" secondAttribute="trailing" constant="3" id="vM7-h7-Qc2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

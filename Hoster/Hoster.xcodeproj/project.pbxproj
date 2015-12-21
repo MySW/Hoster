@@ -43,6 +43,8 @@
 		AB7765421C21998700B91670 /* OtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7765401C21998700B91670 /* OtherTableViewCell.xib */; };
 		AB7765461C21999B00B91670 /* AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7765441C21999B00B91670 /* AddTableViewCell.m */; };
 		AB7765471C21999B00B91670 /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7765451C21999B00B91670 /* AddTableViewCell.xib */; };
+		ABE6221A1C27910E00B926D9 /* SelectTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE622191C27910E00B926D9 /* SelectTimeViewController.m */; };
+		ABE6221C1C27CB9D00B926D9 /* TimeSelect.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABE6221B1C27CB9D00B926D9 /* TimeSelect.plist */; };
 		ABE62D491C24050500298541 /* MapLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE62D481C24050500298541 /* MapLocation.m */; };
 		ABF092701C228A9C00B1538B /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF0926F1C228A9C00B1538B /* AMapLocationKit.framework */; };
 		ABF092F11C2301F000B1538B /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF092F01C2301F000B1538B /* StartViewController.m */; };
@@ -120,6 +122,9 @@
 		AB7765431C21999B00B91670 /* AddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTableViewCell.h; sourceTree = "<group>"; };
 		AB7765441C21999B00B91670 /* AddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableViewCell.m; sourceTree = "<group>"; };
 		AB7765451C21999B00B91670 /* AddTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTableViewCell.xib; sourceTree = "<group>"; };
+		ABE622181C27910E00B926D9 /* SelectTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTimeViewController.h; sourceTree = "<group>"; };
+		ABE622191C27910E00B926D9 /* SelectTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTimeViewController.m; sourceTree = "<group>"; };
+		ABE6221B1C27CB9D00B926D9 /* TimeSelect.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimeSelect.plist; sourceTree = "<group>"; };
 		ABE62D471C24050500298541 /* MapLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLocation.h; sourceTree = "<group>"; };
 		ABE62D481C24050500298541 /* MapLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLocation.m; sourceTree = "<group>"; };
 		ABF0926F1C228A9C00B1538B /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
@@ -291,6 +296,7 @@
 				AB77653E1C21998700B91670 /* OtherTableViewCell.h */,
 				AB77653F1C21998700B91670 /* OtherTableViewCell.m */,
 				AB7765401C21998700B91670 /* OtherTableViewCell.xib */,
+				ABE622171C2790D000B926D9 /* SelectCar */,
 				AB3B826C1C20469D002F8A0E /* SendInformation */,
 			);
 			name = HomePage;
@@ -316,6 +322,16 @@
 				ABF092F01C2301F000B1538B /* StartViewController.m */,
 			);
 			name = SendInformation;
+			sourceTree = "<group>";
+		};
+		ABE622171C2790D000B926D9 /* SelectCar */ = {
+			isa = PBXGroup;
+			children = (
+				ABE622181C27910E00B926D9 /* SelectTimeViewController.h */,
+				ABE622191C27910E00B926D9 /* SelectTimeViewController.m */,
+				ABE6221B1C27CB9D00B926D9 /* TimeSelect.plist */,
+			);
+			name = SelectCar;
 			sourceTree = "<group>";
 		};
 		ABE62D461C2404C000298541 /* custome */ = {
@@ -434,6 +450,7 @@
 				AB7765471C21999B00B91670 /* AddTableViewCell.xib in Resources */,
 				AB3303531C1F99F600147183 /* LaunchScreen.storyboard in Resources */,
 				AB3B824E1C200B57002F8A0E /* money@2x.png in Resources */,
+				ABE6221C1C27CB9D00B926D9 /* TimeSelect.plist in Resources */,
 				AB3303501C1F99F600147183 /* Assets.xcassets in Resources */,
 				AB77653D1C21997D00B91670 /* TapyTableViewCell.xib in Resources */,
 				AB7765421C21998700B91670 /* OtherTableViewCell.xib in Resources */,
@@ -473,6 +490,7 @@
 				AB3303481C1F99F600147183 /* AppDelegate.m in Sources */,
 				AB7765411C21998700B91670 /* OtherTableViewCell.m in Sources */,
 				AB3303451C1F99F600147183 /* main.m in Sources */,
+				ABE6221A1C27910E00B926D9 /* SelectTimeViewController.m in Sources */,
 				AB3303D21C1FF18800147183 /* BaseMapViewController.m in Sources */,
 				AB3303881C1F9BE600147183 /* MainViewController.m in Sources */,
 				AB7765461C21999B00B91670 /* AddTableViewCell.m in Sources */,

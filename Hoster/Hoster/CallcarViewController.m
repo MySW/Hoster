@@ -13,21 +13,26 @@
 #import "AddTableViewCell.h"
 #import "SendGoodsViewController.h"
 #import "StartViewController.h"
+#import "SelectTimeViewController.h"
 #define Height     [UIScreen mainScreen].bounds.size.height
 #define Width      [UIScreen mainScreen].bounds.size.width
 #define LineY      100
 
-@interface CallcarViewController ()<UITableViewDataSource,UITableViewDelegate,sendStrDelegate>
+
+@interface CallcarViewController ()<UITableViewDataSource,UITableViewDelegate,sendStrDelegate, sendDateDelegate,sendStartDelegate>
 {
     AddressCell *addressCell;
     TapyTableViewCell *tapyCell;
     OtherTableViewCell *otherCell;
     AddTableViewCell *addCell;
     CLLocation *_currentLoction;
-    NSArray *placeholderArr;
-    NSMutableArray *passAddressArr;
+    
+    NSMutableDictionary *passAddressDic;
     NSMutableArray *timeArr;
     NSString *carStly;
+    NSString *timeStr;
+    NSString *destinationStr; //目的地
+    NSInteger flag;            // 途径地标示
 }
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapSearchAPI *search;
@@ -45,8 +50,8 @@
 #pragma mark - init
 - (void)setupData
 {
-    placeholderArr = @[@"请输入起始地", @"请输入目的地"];
-    passAddressArr = [NSMutableArray array];
+    flag = 0;
+    passAddressDic = [NSMutableDictionary dictionary];
 }
 - (void)setupUI {
     // 下部分UI
@@ -67,14 +72,20 @@
     freightLabel.textAlignment = NSTextAlignmentCenter;
     [self.bottomView addSubview:freightLabel];
     
+    if (self.mypostion&&destinationStr) {
+        if (carStly) {
+            freightLabel.text = @"约%d￥";
+        } else {
+            
+        }
+    }
+    
     UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     submitBtn.frame = CGRectMake(20, CGRectGetMaxY(freightLabel.frame) + 20 , self.view.frame.size.width - 40, 30);
     [submitBtn setTitle:@"提交" forState:UIControlStateNormal];
     [self.bottomView addSubview:submitBtn];
     
 }
-
-
 
 #pragma mark setupNAV
 - (void)setupNav {
@@ -101,7 +112,7 @@
         return 1;
     }
     if (section == 2) {
-        return passAddressArr.count;
+        return [passAddressDic allKeys].count;
     }
     
     return 2;
@@ -136,6 +147,12 @@
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AddTableViewCell" owner:self options:nil];
             if (nib.count > 0) {
                 addCell = [nib objectAtIndex:0];
+                NSString *str = [passAddressDic objectForKey:[NSString stringWithFormat:@"%ld",indexPath.row]];
+                if (str.length > 0) {
+                    addCell.titlelabel.text = str;
+                } else {
+                    addCell.titlelabel.text = @"途径目的地";
+                }
                 cell = addCell;
             }
             cell.selectionStyle = UITableViewCellSeparatorStyleNone;
@@ -147,7 +164,7 @@
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AddressCell" owner:self options:nil];
             if (nib.count > 0) {
                 addressCell = [nib objectAtIndex:0];
-                addressCell.titleLabel.text = self.mypostion;
+                addressCell.titleLabel.text = destinationStr;
                 if (addressCell.titleLabel.text.length > 0) {
                     addressCell.placeholderLabel.hidden = YES;
                 } else {
@@ -196,6 +213,11 @@
             tapyCell.titleLabel.text = @"用车时间";
             tapyCell.detailLabel.text = @"现在";
             tapyCell.otherLabel.text = @"点击修改";
+            if (timeStr) {
+                tapyCell.detailLabel.text = timeStr;
+                tapyCell.detailLabel.textAlignment = NSTextAlignmentRight;
+                tapyCell.otherLabel.hidden = YES;
+            }
         }
         cell = tapyCell;
     }
@@ -258,7 +280,11 @@
             [self.navigationController pushViewController:sendGoodsVC animated:YES];
             return;
         } else {
-            
+            SelectTimeViewController *selectTimeVC = [SelectTimeViewController new];
+            selectTimeVC.delegate = self;
+            [self presentViewController:selectTimeVC animated:NO completion:^{
+                
+            }];
             return;
         }
     }
@@ -267,6 +293,11 @@
         return;
     }
     StartViewController *startVC = [StartViewController new];
+    startVC.flag_section = indexPath.section;
+    startVC.delegate = self;
+    if (indexPath.section == 2) {
+        startVC.flag = indexPath.row;
+    }
     [self.navigationController pushViewController:startVC animated:YES];
 }
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -290,26 +321,57 @@
 #pragma mark 提交编辑操作时会调用这个方法(删除，添加)
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     // 删除操作
-    [passAddressArr removeObjectAtIndex:(indexPath.row )];
+    [passAddressDic removeObjectForKey:[passAddressDic allKeys][indexPath.row]];
     // 2.更新UITableView UI界面
     
     [self.detailsTVB deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation: UITableViewRowAnimationRight];
 }
 
-#pragma mark 途经地
+#pragma mark 途经地添加事件
 - (void)selectAction:(UIButton *)sender
 {
-    [passAddressArr addObject:@"爱尔兰"];
+    [passAddressDic setObject:@"" forKey:[NSString stringWithFormat:@"%ld", flag]];
     [self.detailsTVB reloadData];
+    flag ++;
 }
 
 #pragma mark delegate 传值
 
+// 车型传值
 -(void)sendStr:(NSString *)str
 {
     carStly = str;
     [self.detailsTVB reloadData];
 }
+// 需车时间传值
+-(void)sendDateString:(NSString *)str
+{
+    timeStr = str;
+    [self.detailsTVB reloadData];
+}
+
+// 起始地传值
+- (void)senderMessage:(NSString *)sender
+{
+    self.mypostion = sender;
+    [self.detailsTVB reloadData];
+}
+
+// 途径地传值
+- (void)senderPassAddress:(NSString *)sender with:(NSInteger)myflag
+{
+    [passAddressDic setObject:sender forKey:[NSString stringWithFormat:@"%ld",myflag]];
+    NSLog(@"%@", passAddressDic);
+    [self.detailsTVB reloadData];
+}
+
+// 目的地传值
+- (void)senderOthereMessge:(NSString *)sender
+{
+    destinationStr = sender;
+    [self.detailsTVB reloadData];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     self.tabBarController.tabBar.hidden = NO;
